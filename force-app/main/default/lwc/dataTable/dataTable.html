@@ -1,0 +1,33 @@
+<template>
+    
+    <lightning-datatable
+        data={sfdata}
+        columns={sfcolumns}
+        key-field="id">
+    </lightning-datatable>
+    <br>
+    <br>
+
+    <table class="slds-text-body_regular">
+        <!-- Table Header -->
+        <tr>
+            <th class="checkboxCol"><input type="checkbox"></th>
+            <th class="slds-text-title_caps">First name</th>
+            <th class="slds-text-title_caps">Last name</th> 
+            <th class="slds-text-title_caps">Age</th>
+        </tr>
+          <!-- Table Body -->
+        <tr>
+            <td class="checkboxCol"><input type="checkbox"></td>
+            <td>John</td>
+            <td>Smith</td> 
+            <td>50</td>
+        </tr>
+        <tr>
+            <td class="checkboxCol"><input type="checkbox"></td>
+            <td>Test</td>
+            <td>Name</td> 
+            <td>60</td>
+        </tr>
+    </table>
+</template>
