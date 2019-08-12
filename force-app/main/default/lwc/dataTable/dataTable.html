@@ -1,33 +1,44 @@
 <template>
     
     <lightning-datatable
-        data={sfdata}
-        columns={sfcolumns}
+        data={data}
+        columns={columns}
         key-field="id">
     </lightning-datatable>
     <br>
     <br>
 
+    <lightning-icon icon-name="utility:email" variant="base" alternative-text="email"></lightning-icon>
+
     <table class="slds-text-body_regular">
         <!-- Table Header -->
         <tr>
             <th class="checkboxCol"><input type="checkbox"></th>
-            <th class="slds-text-title_caps">First name</th>
-            <th class="slds-text-title_caps">Last name</th> 
-            <th class="slds-text-title_caps">Age</th>
+            <template for:each={columns} for:item='c'>
+                <th key={c.key}  class="slds-text-title_caps">{c.label}</th>
+            </template>
         </tr>
           <!-- Table Body -->
         <tr>
             <td class="checkboxCol"><input type="checkbox"></td>
             <td>John</td>
-            <td>Smith</td> 
+            <td>
+                <select>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                </select>
+            </td> 
             <td>50</td>
         </tr>
-        <tr>
-            <td class="checkboxCol"><input type="checkbox"></td>
-            <td>Test</td>
-            <td>Name</td> 
-            <td>60</td>
-        </tr>
+        <template for:each={data} for:item='d'>
+            <tr key={d.Id}>
+                <td class="checkboxCol"><input type="checkbox"></td>
+                <td>{d.f1}</td>
+                <td>{d.f2}</td> 
+                <td>{d.f3}</td>
+            </tr>
+    </template>
     </table>
 </template>
