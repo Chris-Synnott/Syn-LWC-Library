@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 
 const sfcolumns = [
     {label: 'Opportunity name', fieldName: 'opportunityName', type: 'text'},
@@ -59,7 +59,7 @@ const data = [
         f3: 'ad3' }
     ];
 
-    var colkeys = 1;
+    var colkeys = 2;
 
 
 
@@ -75,6 +75,7 @@ export default class DataTable extends LightningElement {
     constructor(){
         super()
         this.createHeaderKey(colkeys);
+        this.createData(columns,data);
     }
 
     //generates unique key for iteration header items
@@ -88,6 +89,49 @@ export default class DataTable extends LightningElement {
             num++;
         }
     }
+
+    //two array's - 1.) col with keys 2.) data with keys
+    createData(col,d){
+        var i,j = 0;
+        // eslint-disable-next-line no-unused-vars
+        var fieldName;
+        var final = [];
+        var item;
+        console.log("col array: " + JSON.stringify(col));
+        console.log("data array: " + JSON.stringify(d));
+
+        //first must check size is the same
+        //col = 3 cols
+        //data = 10 items
+        //1
+            //f1 = 1
+            //f2 = 2
+            //f3 = 3
+        for(i=0;i<d.length;i++){   //10
+            for(j=0; j <col.length;j++){  //3
+                fieldName = col[j].fieldName;
+                if(j === 0){
+                    final.push([]);
+                }
+
+                    item = {'item': d[i][fieldName]};
+                    final[i].push(item);
+                
+                console.log("Final: " + JSON.stringify(final));
+            }
+        }
+    }
+
+
+    // @api
+    // get isText(){
+    //     //this.currColIndex++;
+    //     if(this.columns[this.currColIndex].type === 'text'){
+    //         return true;
+    //     }
+    //         return false;
+    // }
+
 
     //Called when the element is inserted into a document.
     //connectedCallback()

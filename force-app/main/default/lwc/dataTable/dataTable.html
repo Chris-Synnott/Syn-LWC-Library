@@ -32,13 +32,22 @@
             </td> 
             <td>50</td>
         </tr>
-        <template for:each={data} for:item='d'>
-            <tr key={d.Id}>
+        <template iterator:d={data}>
+            
+            <tr key={d.value.Id}>
                 <td class="checkboxCol"><input type="checkbox"></td>
-                <td>{d.f1}</td>
-                <td>{d.f2}</td> 
-                <td>{d.f3}</td>
+                <td>{d.value.f1}</td>
+                <td>{d.value.f2}</td> 
+                <td>{d.value.f3}</td> 
+                <!-- <template if:true={isText}>
+                        <td>text</td>
+                </template>
+                <template if:false={isText}>
+                        <td>{d.value.f3}</td>
+                </template> -->
+
             </tr>
+           
     </template>
     </table>
 </template>
