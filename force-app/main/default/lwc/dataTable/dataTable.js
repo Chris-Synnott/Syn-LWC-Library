@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { LightningElement, track, api } from 'lwc';
+import { LightningElement, track} from 'lwc';
 
 const sfcolumns = [
     {label: 'Opportunity name', fieldName: 'opportunityName', type: 'text'},
@@ -71,11 +71,14 @@ export default class DataTable extends LightningElement {
     @track columns = columns;
     @track colkeys = colkeys;
 
+    @track final = [];
+
     //"Called when the component is created."
     constructor(){
         super()
         this.createHeaderKey(colkeys);
         this.createData(columns,data);
+        console.log('AGAIN:' + this.final);
     }
 
     //generates unique key for iteration header items
@@ -95,7 +98,7 @@ export default class DataTable extends LightningElement {
         var i,j = 0;
         // eslint-disable-next-line no-unused-vars
         var fieldName;
-        var final = [];
+        //var final = [];
         var item;
         console.log("col array: " + JSON.stringify(col));
         console.log("data array: " + JSON.stringify(d));
@@ -103,7 +106,12 @@ export default class DataTable extends LightningElement {
         //first must check size is the same
         //col = 3 cols
         //data = 10 items
-        //1
+        //1 : {key: '1', 
+        //        items:{
+        //          {isText: true, isPicklist: false, value: 'TEXT'}
+        //          {isText: false, isPicklist: true, value: 'Preselected', picklist: pickListOptions}
+        //        }
+        //      }
             //f1 = 1
             //f2 = 2
             //f3 = 3
@@ -111,13 +119,13 @@ export default class DataTable extends LightningElement {
             for(j=0; j <col.length;j++){  //3
                 fieldName = col[j].fieldName;
                 if(j === 0){
-                    final.push([]);
+                    this.final.push({'rowKey': i, items: []});
                 }
 
-                    item = {'item': d[i][fieldName]};
-                    final[i].push(item);
+                    item = {'colKey': j, 'value': d[i][fieldName]};
+                    this.final[i].items.push(item);
                 
-                console.log("Final: " + JSON.stringify(final));
+                console.log("This Final: " + JSON.stringify(this.final));
             }
         }
     }

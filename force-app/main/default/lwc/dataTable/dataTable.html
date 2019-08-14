@@ -32,20 +32,14 @@
             </td> 
             <td>50</td>
         </tr>
-        <template iterator:d={data}>
+        <template iterator:row={final} >
             
-            <tr key={d.value.Id}>
+            <tr key={row.value.rowKey}>
                 <td class="checkboxCol"><input type="checkbox"></td>
-                <td>{d.value.f1}</td>
-                <td>{d.value.f2}</td> 
-                <td>{d.value.f3}</td> 
-                <!-- <template if:true={isText}>
-                        <td>text</td>
-                </template>
-                <template if:false={isText}>
-                        <td>{d.value.f3}</td>
-                </template> -->
-
+               <!--does it ignore comments? .val-->
+                <template iterator:col={row.value.items}>
+                    <td key={col.value.colKey}>{col.value.value}</td>
+                </template> 
             </tr>
            
     </template>
