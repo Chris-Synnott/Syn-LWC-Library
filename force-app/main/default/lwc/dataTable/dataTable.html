@@ -8,7 +8,6 @@
     <br>
     <br>
 
-    <lightning-icon icon-name="utility:email" variant="base" alternative-text="email"></lightning-icon>
 
     <table class="slds-text-body_regular">
         <!-- Table Header -->
@@ -19,19 +18,6 @@
             </template>
         </tr>
           <!-- Table Body -->
-        <tr>
-            <td class="checkboxCol"><input type="checkbox"></td>
-            <td>John</td>
-            <td>
-                <select>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
-            </td> 
-            <td>50</td>
-        </tr>
         <template iterator:row={final} >
             
             <tr key={row.value.rowKey}>
@@ -43,10 +29,12 @@
                                     {col.value.value}
                             </template>
                             <template if:true={col.value.isPhone}>
-                                    {col.value.value}
+                                <lightning-icon icon-name="utility:phone_portrait" size="x-small" alternative-text="phone"></lightning-icon>
+                                <a href="tel:{col.value.value}">{col.value.value}</a>
                             </template>
                             <template if:true={col.value.isEmail}>
-                                    {col.value.value}
+                                <lightning-icon icon-name="utility:email" size="x-small" alternative-text="email"></lightning-icon>
+                                <a href="mailto:{col.value.value}">{col.value.value}</a>
                             </template>
                             <template if:true={col.value.isPicklist}>
                                     <select>

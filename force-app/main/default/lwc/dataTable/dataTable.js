@@ -43,28 +43,28 @@ const options =[
 
 
 const columns = [
-    {label: 'label1', fieldName: 'f1', type: 'text'},
-    {label: 'label2', fieldName: 'f2', type: 'email'},
+    {label: 'label1', fieldName: 'f1', type: 'email'},
+    {label: 'label2', fieldName: 'f2', type: 'phone'},
     {label: 'label3', fieldName: 'f3', type: 'picklist'}
 ];
 
 const data = [
     {
         Id: '1',
-        f1: 'a1',
+        f1: 'test@email.com',
         f2: 'a2',
         f3: options
     },
     {
         Id: '2',
         f1: 'b1',
-        f2: 'b2',
+        f2: '8189420978',
         f3: options
     },
     {
         Id: '3',
-        f1: 'c1',
-        f2: 'c2',
+        f1: 'test2.com',
+        f2: '1-310-344-5940',
         f3: options
     },
     {
@@ -147,7 +147,7 @@ export default class DataTable extends LightningElement {
                     item = {'colKey': j, 'value': d[i][fieldName], isText:false,isPicklist:false,isPhone:false,isEmail:true};
                 }
                 else if (col[j].type === 'phone'){
-                    item = {'colKey': j, 'value': d[i][fieldName], isText:false,isPicklist:false,isPhone:true,isEmail:true};
+                    item = {'colKey': j, 'value': d[i][fieldName], isText:false,isPicklist:false,isPhone:true,isEmail:false};
                 }
 
                 this.final[i].items.push(item);
