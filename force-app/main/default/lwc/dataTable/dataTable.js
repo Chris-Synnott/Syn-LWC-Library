@@ -26,11 +26,26 @@ const sfdata = [{
     trendIcon: 'utility:up'
 }];
 
+const options =[
+    {
+        label: 'label-1',
+        value: 'value-1'
+    },
+    {
+        label: 'label-2',
+        value: 'value-2'
+    },
+    {
+        label: 'label-3',
+        value: 'value-3'
+    }
+];
+
 
 const columns = [
     {label: 'label1', fieldName: 'f1', type: 'text'},
     {label: 'label2', fieldName: 'f2', type: 'email'},
-    {label: 'label3', fieldName: 'f3', type: 'phone'},
+    {label: 'label3', fieldName: 'f3', type: 'picklist'}
 ];
 
 const data = [
@@ -38,25 +53,26 @@ const data = [
         Id: '1',
         f1: 'a1',
         f2: 'a2',
-        f3: 'a3' 
+        f3: options
     },
     {
         Id: '2',
         f1: 'b1',
         f2: 'b2',
-        f3: 'b3' 
+        f3: options
     },
     {
         Id: '3',
         f1: 'c1',
         f2: 'c2',
-        f3: 'c3' 
+        f3: options
     },
     {
         Id: '4',
         f1: 'd1',
         f2: 'd2',
-        f3: 'ad3' }
+        f3: options 
+    }
     ];
 
     var colkeys = 2;
@@ -121,9 +137,20 @@ export default class DataTable extends LightningElement {
                 if(j === 0){
                     this.final.push({'rowKey': i, items: []});
                 }
+                if(col[j].type === 'text'){
+                    item = {'colKey': j, 'value': d[i][fieldName], isText:true,isPicklist:false,isPhone:false,isEmail:false};
+                }
+                else if (col[j].type === 'picklist'){
+                    item = {'colKey': j, 'value': d[i][fieldName], isText:false,isPicklist:true,isPhone:false,isEmail:false, picklist:d[i][fieldName]};
+                }
+                else if (col[j].type === 'email'){
+                    item = {'colKey': j, 'value': d[i][fieldName], isText:false,isPicklist:false,isPhone:false,isEmail:true};
+                }
+                else if (col[j].type === 'phone'){
+                    item = {'colKey': j, 'value': d[i][fieldName], isText:false,isPicklist:false,isPhone:true,isEmail:true};
+                }
 
-                    item = {'colKey': j, 'value': d[i][fieldName]};
-                    this.final[i].items.push(item);
+                this.final[i].items.push(item);
                 
                 console.log("This Final: " + JSON.stringify(this.final));
             }

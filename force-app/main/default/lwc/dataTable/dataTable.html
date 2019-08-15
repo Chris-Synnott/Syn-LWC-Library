@@ -38,10 +38,27 @@
                 <td class="checkboxCol"><input type="checkbox"></td>
                <!--does it ignore comments? .val-->
                 <template iterator:col={row.value.items}>
-                    <td key={col.value.colKey}>{col.value.value}</td>
+                        <td key={col.value.colKey}>
+                            <template if:true={col.value.isText}>
+                                    {col.value.value}
+                            </template>
+                            <template if:true={col.value.isPhone}>
+                                    {col.value.value}
+                            </template>
+                            <template if:true={col.value.isEmail}>
+                                    {col.value.value}
+                            </template>
+                            <template if:true={col.value.isPicklist}>
+                                    <select>
+                                            <template for:each={col.value.picklist} for:item='item'>
+                                                <option key={item.label} value={item.value}>{item.label}</option>
+                                            </template>
+                                    </select>
+                            </template>
+
+                        </td>
                 </template> 
             </tr>
-           
     </template>
     </table>
 </template>
