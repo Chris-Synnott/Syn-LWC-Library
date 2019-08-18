@@ -16,37 +16,18 @@
             <template for:each={columns} for:item='c'>
                 <th key={c.key}  class="slds-text-title_caps">{c.label}</th>
             </template>
-        </tr>
+        </tr> 
           <!-- Table Body -->
         <template iterator:row={final} >
-            
             <tr key={row.value.rowKey}>
                 <td class="checkboxCol"><input type="checkbox"></td>
                <!--does it ignore comments? .val-->
                 <template iterator:col={row.value.items}>
                         <td key={col.value.colKey}>
-                            <template if:true={col.value.isText}>
-                                    {col.value.value}
-                            </template>
-                            <template if:true={col.value.isPhone}>
-                                <lightning-icon icon-name="utility:phone_portrait" size="x-small" alternative-text="phone"></lightning-icon>
-                                <a href="tel:{col.value.value}">{col.value.value}</a>
-                            </template>
-                            <template if:true={col.value.isEmail}>
-                                <lightning-icon icon-name="utility:email" size="x-small" alternative-text="email"></lightning-icon>
-                                <a href="mailto:{col.value.value}">{col.value.value}</a>
-                            </template>
-                            <template if:true={col.value.isPicklist}>
-                                    <select>
-                                            <template for:each={col.value.picklist} for:item='item'>
-                                                <option key={item.label} value={item.value}>{item.label}</option>
-                                            </template>
-                                    </select>
-                            </template>
-
+                            <c-td-value index={row.index} type={col.value.type} value={col.value.value} picklist={col.value.picklist}></c-td-value>
                         </td>
-                </template> 
+                </template>
             </tr>
-    </template>
+        </template>
     </table>
 </template>

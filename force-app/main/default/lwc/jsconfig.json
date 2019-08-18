@@ -4,6 +4,9 @@
         "paths": {
             "c/dataTable": [
                 "dataTable/dataTable.js"
+            ],
+            "c/tdValue": [
+                "tdValue/tdValue.js"
             ]
         },
         "experimentalDecorators": true

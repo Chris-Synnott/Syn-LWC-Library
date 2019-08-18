@@ -138,16 +138,16 @@ export default class DataTable extends LightningElement {
                     this.final.push({'rowKey': i, items: []});
                 }
                 if(col[j].type === 'text'){
-                    item = {'colKey': j, 'value': d[i][fieldName], isText:true,isPicklist:false,isPhone:false,isEmail:false};
+                    item = {'colKey': j, 'type': col[j].type, 'value': d[i][fieldName], isText:true,isPicklist:false,isPhone:false,isEmail:false};
                 }
                 else if (col[j].type === 'picklist'){
-                    item = {'colKey': j, 'value': d[i][fieldName], isText:false,isPicklist:true,isPhone:false,isEmail:false, picklist:d[i][fieldName]};
+                    item = {'colKey': j, 'type': col[j].type, 'value': d[i][fieldName], isText:false,isPicklist:true,isPhone:false,isEmail:false, picklist:d[i][fieldName]};
                 }
                 else if (col[j].type === 'email'){
-                    item = {'colKey': j, 'value': d[i][fieldName], isText:false,isPicklist:false,isPhone:false,isEmail:true};
+                    item = {'colKey': j, 'type': col[j].type, 'value': d[i][fieldName], isText:false,isPicklist:false,isPhone:false,isEmail:true};
                 }
                 else if (col[j].type === 'phone'){
-                    item = {'colKey': j, 'value': d[i][fieldName], isText:false,isPicklist:false,isPhone:true,isEmail:false};
+                    item = {'colKey': j, 'type': col[j].type, 'value': d[i][fieldName], isText:false,isPicklist:false,isPhone:true,isEmail:false};
                 }
 
                 this.final[i].items.push(item);
