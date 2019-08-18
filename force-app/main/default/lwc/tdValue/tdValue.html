@@ -1,11 +1,11 @@
 <template>
         <template if:true={isPhone}>
             <lightning-icon icon-name="utility:phone_portrait" size="x-small" alternative-text="phone"></lightning-icon>
-            <a href={valueTd}>{valueTd}</a>
+            <a href={phoneLink}>{valueTd}</a>
         </template>
         <template if:true={isEmail}>
             <lightning-icon icon-name="utility:email" size="x-small" alternative-text="email"></lightning-icon>
-            <a href={valueTd}>{valueTd}</a>
+            <a href={emailLink}>{valueTd}</a>
         </template>
         <template if:true={isPicklist}>
             <select>

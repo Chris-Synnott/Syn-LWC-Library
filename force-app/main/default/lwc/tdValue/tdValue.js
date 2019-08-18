@@ -10,6 +10,8 @@ export default class tdValue extends LightningElement {
 
 
     @track isPhone;
+    @track formattedPhone;
+    @track formatedEmail;
     @track isEmail;
     @track isText;
     @track isPicklist;
@@ -69,13 +71,24 @@ export default class tdValue extends LightningElement {
     }
 
 
-
-    getPhoneLink(){
+    @api
+    get phoneLink(){
+        var phoneVal = this.value;
+        console.log('calling phone link');
+        phoneVal = phoneVal.replace(/\D+/g, '');
+        if(phoneVal.length === 11){
+            phoneVal = phoneVal[0] + "-"+phoneVal.slice(1,4)+"-"+phoneVal.slice(4,7)+"-"+phoneVal.slice(7);
+        }
+        else{
+            phoneVal= phoneVal.slice(0,3)+"-"+phoneVal.slice(3,6)+"-"+phoneVal.slice(6);
+        }
         //format phone first
-        return 'tel:' + this.value;
+        console.log('Phone formatted: ' + phoneVal);
+        return 'tel:' + phoneVal;
     }
 
-    getEmailLink(){
+    @api
+    get emailLink(){
         return 'mailto:' + this.value;
     }
 
