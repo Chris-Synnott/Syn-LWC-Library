@@ -9,13 +9,16 @@ var daysOfWeek = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
 
 export default class Calendar extends LightningElement {
+    daysOfWeek = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     @track data = [];
     currentDate;
 
+    //int values
     @track currYear;
     @track currMonth;
     @track currDay;
 
+    //string value
     @track month;
 
     todayDate;
@@ -33,52 +36,28 @@ export default class Calendar extends LightningElement {
     }
 
     buildDays(m,y){
-        //var data;
         var day;
-        var date;
+        var date = new Date(y,m,1);
+        //key is used for lwc iteration
         var key = 0;
-        var firstDay;
+        //reset data array
         this.data = [];
         //set month text string
         this.month = months[this.currMonth];
-
-        firstDay = new Date(y,m,1);
-        //first we need to check if any prev month overflows start of calendar
-        date = new Date(y,m,1);
-        //if not a sunday, go prev day
-        if(firstDay.getDay() > 0){
-            date.setDate(date.getDate() - 1);
-        }
-
-        //----------this is broken-----cant push in reverse order
-        //add prev months days
+        //Fill out beginning of calendar with previous month's days
         while(date.getDay() > 0){
-            //push to data
-            day = {'key': key,'day':date.getDate(),'isToday':this.isToday(date),'dayOfWeek':daysOfWeek[date.getDay()],'disabled':true};
-            this.data.push(day);
-            key++;
-            //go to previous date
             date.setDate(date.getDate() - 1);
         }
-
-        //add current day
-        date = firstDay;
-        day = {'key': key,'day':date.getDate(),'isToday':this.isToday(date),'dayOfWeek':daysOfWeek[date.getDay()],'disabled':false};
-        this.data.push(day);
-        key++;
-        date.setDate(date.getDate() + 1);
-
-        //add rest of current month days
-        while(date.getMonth() === m){
-            day = {'key': key,'day':date.getDate(),'isToday':this.isToday(date),'dayOfWeek':daysOfWeek[date.getDay()],'disabled':false};
-            this.data.push(day);
-            key++;
-            date.setDate(date.getDate() + 1);
-        }
-
-        //add next months days fitting into calendar
+        //loop through each calendar square
         while(key <=34){
-            day = {'key': key,'day':date.getDate(),'isToday':this.isToday(date),'dayOfWeek':daysOfWeek[date.getDay()],'disabled':true};
+            //if day is in current month
+            if(date.getMonth() === m){
+                day = {'key': key,'day':date.getDate(),'isToday':this.isToday(date),'dayOfWeek':daysOfWeek[date.getDay()],'disabled':false};
+            }
+            //else show disabled
+            else{
+                day = {'key': key,'day':date.getDate(),'isToday':this.isToday(date),'dayOfWeek':daysOfWeek[date.getDay()],'disabled':true};
+            }
             this.data.push(day);
             key++;
             date.setDate(date.getDate() + 1);
