@@ -1,0 +1,17 @@
+.dayWrapper{
+    height: 125px;
+}
+
+.dayContent{
+    border: 1px solid #dddbda;
+    height: 100%;
+    color: #777675;
+}
+
+.disabled{
+    background-color: #e6e6e6;
+}
+
+.highlightDate{
+    color: blue;
+}

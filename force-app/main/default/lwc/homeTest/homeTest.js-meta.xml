@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="dataTable">
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="homeTest">
     <apiVersion>46.0</apiVersion>
     <isExposed>true</isExposed>
-    <masterLabel>TdValue</masterLabel>
+    <masterLabel>Home Test</masterLabel>
   <description>This is a demo component.</description>
   <targets>
       <target>lightning__RecordPage</target>

@@ -1,30 +1,30 @@
 /* eslint-disable no-console */
 import { LightningElement, track} from 'lwc';
 
-const sfcolumns = [
-    {label: 'Opportunity name', fieldName: 'opportunityName', type: 'text'},
-    {label: 'Contact Email', fieldName: 'contact', type: 'email'},
-    {label: 'Contact Phone', fieldName: 'phone', type: 'phone'},
-];
+// const sfcolumns = [
+//     {label: 'Opportunity name', fieldName: 'opportunityName', type: 'text'},
+//     {label: 'Contact Email', fieldName: 'contact', type: 'email'},
+//     {label: 'Contact Phone', fieldName: 'phone', type: 'phone'},
+// ];
 
-const sfdata = [{
-    id: 'a',
-    opportunityName: 'Cloudhub',
-    confidence: 0.2,
-    amount: 25000,
-    contact: 'jrogers@cloudhub.com',
-    phone: '2352235235',
-    trendIcon: 'utility:down'
-},
-{
-    id: 'b',
-    opportunityName: 'Quip',
-    confidence: 0.78,
-    amount: 740000,
-    contact: 'quipy@quip.com',
-    phone: '2352235235',
-    trendIcon: 'utility:up'
-}];
+// const sfdata = [{
+//     id: 'a',
+//     opportunityName: 'Cloudhub',
+//     confidence: 0.2,
+//     amount: 25000,
+//     contact: 'jrogers@cloudhub.com',
+//     phone: '2352235235',
+//     trendIcon: 'utility:down'
+// },
+// {
+//     id: 'b',
+//     opportunityName: 'Quip',
+//     confidence: 0.78,
+//     amount: 740000,
+//     contact: 'quipy@quip.com',
+//     phone: '2352235235',
+//     trendIcon: 'utility:up'
+// }];
 
 const options =[
     {
@@ -75,36 +75,37 @@ const data = [
     }
     ];
 
-    var colkeys = 2;
+var colkeys = 2;
 
 
 
 export default class DataTable extends LightningElement {
-    @track sfdata = sfdata;
-    @track sfcolumns = sfcolumns;
 
-    @track data = data;
+    // eslint-disable-next-line @lwc/lwc/valid-api
+    @track tdata = data;
+    //@track columns = columns;
     @track columns = columns;
     @track colkeys = colkeys;
 
     @track final = [];
+    // @track ready = false;
 
     //"Called when the component is created."
     constructor(){
         super()
         this.createHeaderKey(colkeys);
-        this.createData(columns,data);
+        this.createData(this.columns,this.tdata);
         console.log('AGAIN:' + this.final);
     }
 
     //generates unique key for iteration header items
     createHeaderKey = (num) => { 
-        var test = data;
+        var test = this.tdata;
         var i;
         console.log(test);
-        for(i = 0; i<this.data.length;i++){
+        for(i = 0; i<this.tdata.length;i++){
             console.log(i + ' colKey:' + num);
-            this.data[i].key = num;
+            this.tdata[i].key = num;
             num++;
         }
     }

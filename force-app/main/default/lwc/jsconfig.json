@@ -7,6 +7,15 @@
             ],
             "c/tdValue": [
                 "tdValue/tdValue.js"
+            ],
+            "c/homeTest": [
+                "homeTest/homeTest.js"
+            ],
+            "c/calendar": [
+                "calendar/calendar.js"
+            ],
+            "c/day": [
+                "day/day.js"
             ]
         },
         "experimentalDecorators": true
