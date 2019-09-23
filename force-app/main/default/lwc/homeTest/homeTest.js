@@ -49,9 +49,38 @@ const data = [
     ];
 
 
+
+//calendar test data
+const sampleEventData =[
+    {
+        'Name': 'Event 1', 
+        'StartTime': '2019/09/01T15:01:00',
+        'StartDate':'2019/09/01',
+        'EndDate':'2019/09/01',
+        'Description':'Description1'
+    },
+    {
+        'Name': 'Event 2', 
+        'StartDate':'2019/09/01',
+        'EndDate':'2019/09/01',
+        'Description':'Description2'
+    },
+    {
+        'Name': 'Event 3', 
+        'StartDate':'2019/09/03',
+        'EndDate':'2019/09/03',
+        'Description':'Description3'
+    },
+
+];
+
+
+
+
 export default class HomeTest extends LightningElement {
 
     @track inputData = data;
     @track inputColumns = columns;
+    @track calendarEvents = sampleEventData;
 
 }

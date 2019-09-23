@@ -2,18 +2,17 @@
     <div class={isToday}>
         <div class={dayClasses}>
             <div class="slds-grid slds-wrap">
+                <!--Display month if prev in start, 1st of curr, or 1st of next-->
                 <div class='slds-col slds-size_1-of-1'>
-                    <span class='currentDay'>{dayNumber}</span>
+                    <span class='currentDay'>{month} {dayNumber}</span>
                 </div>
+                <!--Loop through all events for a given day-->
                 <template for:each={events} for:item='e'>
-                    <div key={e.key} class='slds-col slds-size_1-of-1'><div class='monthlyEvent'><b>{e.StartDate}</b> {e.Name}</div></div>
+                    <!-- TODO: change startDate to StartTime -->
+                    <div key={e.key} class='slds-col slds-size_1-of-1'>
+                        <div class='monthlyEvent'><b>{e.StartDate}</b> {e.Name}</div>
+                    </div>
                 </template>
-
-                <!-- <div class='slds-col slds-size_1-of-1'><div class='monthlyEvent'><b>12:00 PM</b> Event 2</div></div> -->
-
-            <!-- {today}
-            {dayOfWeek}
-            {disabled} -->
             </div>
         </div>
     </div>
