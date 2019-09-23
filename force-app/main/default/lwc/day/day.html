@@ -5,9 +5,12 @@
                 <div class='slds-col slds-size_1-of-1'>
                     <span class='currentDay'>{dayNumber}</span>
                 </div>
-                <div class='slds-col slds-size_1-of-1'><div class='monthlyEvent'><b>8:00 AM</b> Event 1</div></div>
-                <div class='slds-col slds-size_1-of-1'><div class='monthlyEvent'><b>12:00 PM</b> Event 2</div></div>
-                
+                <template for:each={events} for:item='e'>
+                    <div key={e.key} class='slds-col slds-size_1-of-1'><div class='monthlyEvent'><b>{e.StartDate}</b> {e.Name}</div></div>
+                </template>
+
+                <!-- <div class='slds-col slds-size_1-of-1'><div class='monthlyEvent'><b>12:00 PM</b> Event 2</div></div> -->
+
             <!-- {today}
             {dayOfWeek}
             {disabled} -->

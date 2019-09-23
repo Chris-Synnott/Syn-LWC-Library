@@ -4,6 +4,7 @@ export default class Day extends LightningElement {
     @api dayNumber;
     @api today;
     @api dayOfWeek;
+    @api events;
     @api disabled;
 
     get dayClasses() { 

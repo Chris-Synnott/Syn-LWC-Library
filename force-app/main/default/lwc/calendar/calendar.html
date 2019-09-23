@@ -1,6 +1,7 @@
 <template>
     <div class='calendarWrapper'>
         <div class="slds-grid slds-wrap">
+            <!-- Calendar Header -->
             <div class='slds-col slds-size_1-of-1 calendarHeader'>
                 <div class="slds-grid slds-wrap">
                     <div class='slds-col slds-size_8-of-12'>
@@ -17,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Week Days Row-->
+            <!-- Days of Week (Strings) Row-->
             <template for:each={daysOfWeek} for:item='day'>
                     <div key={day} class='slds-col slds-size_1-of-7'>
                         <div class='slds-text-align_center'>{day}</div>
@@ -26,7 +27,7 @@
             <!-- 35 Calendar Squares-->
             <template for:each={data} for:item='d'>
                 <div key={d.key} class='slds-col slds-size_1-of-7'>
-                    <c-day day-number={d.day} today={d.isToday} day-of-week={d.dayOfWeek} disabled={d.disabled}></c-day>
+                    <c-day day-number={d.day} today={d.isToday} day-of-week={d.dayOfWeek} events={d.events} disabled={d.disabled}></c-day>
                 </div>
             </template>
         </div>
