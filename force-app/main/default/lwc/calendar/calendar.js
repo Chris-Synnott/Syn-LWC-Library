@@ -9,7 +9,7 @@ var daysOfWeek = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
 
 export default class Calendar extends LightningElement {
-    daysOfWeek = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    daysOfWeek = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
     @track data = [];
     currentDate;
 
@@ -66,7 +66,7 @@ export default class Calendar extends LightningElement {
 
     //check if date is today
     isToday(d){
-        //zero out time
+        //zero out time for correct comparision
         d.setHours(0,0,0,0);
         return (d.valueOf() === this.todayDate.valueOf()) ? true : false;
     }

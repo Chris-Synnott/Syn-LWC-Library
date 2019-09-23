@@ -2,7 +2,7 @@
     height: 125px;
 }
 
-.dayContent{
+.daySquare{
     border: 1px solid #dddbda;
     height: 100%;
     color: #777675;
@@ -13,5 +13,23 @@
 }
 
 .highlightDate{
-    color: blue;
+    border: 1px solid #0c77d4;
+}
+
+.currentDay{
+    padding: 0px 5px;
+}
+
+.monthlyEvent{
+    border: 1px solid #dcedf9;
+    background-color: #ebf7ff;
+    color: #7597b4;
+    margin-top: 2px;
+    padding: 0px 6px;
+    font-size: 10.5px;
+}
+
+.daySquare.disabled .monthlyEvent{
+    border: 1px solid #c5c3c3 !important;
+    background-color: #d4d4d4 !important;
 }

@@ -1,16 +1,19 @@
 <template>
     <div class='calendarWrapper'>
         <div class="slds-grid slds-wrap">
-            <div class='slds-col slds-size_1-of-1'>
+            <div class='slds-col slds-size_1-of-1 calendarHeader'>
                 <div class="slds-grid slds-wrap">
-                    <div class='slds-col slds-size_1-of-3'>
-                        <div class='slds-text-align_left'><lightning-button label="Prev" title="Prev" onclick={prevMonth} class="slds-m-left_x-small"></lightning-button></div>
+                    <div class='slds-col slds-size_8-of-12'>
+                        <div class='slds-text-align_left'>
+                            <div class="eventIcon"><lightning-icon icon-name="standard:event" alternative-text="Event"></lightning-icon></div>
+                            <div class="slds-text-heading_medium dateString">{month} {currYear}</div>
+                        </div>
                     </div>
-                    <div class='slds-col slds-size_1-of-3'>
-                        <div class='slds-text-align_center'>{month} | {currYear}</div>
-                    </div>
-                    <div class='slds-col slds-size_1-of-3'>
-                        <div class='slds-text-align_right'><lightning-button label="Next" title="Next" onclick={nextMonth} class="slds-m-left_x-small"></lightning-button></div>
+                    <div class='slds-col slds-size_4-of-12'>
+                        <div class='slds-text-align_right'>
+                            <lightning-button label="< Prev" title="< Prev" onclick={prevMonth} class="slds-m-left_x-small"></lightning-button>
+                            <lightning-button label="Next >" title="Next >" onclick={nextMonth} class="slds-m-left_x-small"></lightning-button>
+                        </div>
                     </div>
                 </div>
             </div>

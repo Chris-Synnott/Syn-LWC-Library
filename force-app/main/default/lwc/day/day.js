@@ -7,9 +7,9 @@ export default class Day extends LightningElement {
     @api disabled;
 
     get dayClasses() { 
-        return this.disabled ? 'dayContent disabled' : 'dayContent';
+        return this.disabled ? 'daySquare disabled' : 'daySquare';
       }
     get isToday(){
-        return this.today ? 'highlightDate' : '';
+        return this.today ? 'dayWrapper highlightDate' : 'dayWrapper';
     }
 }

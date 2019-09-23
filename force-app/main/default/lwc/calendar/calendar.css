@@ -6,3 +6,16 @@
     background-color: white;
     padding: 20px;
 }
+
+.calendarHeader{
+    padding-bottom: 20px;
+}
+
+.eventIcon{
+    padding-right:10px;
+    float: left;
+}
+
+.dateString{
+    padding-top: 4px;
+}
